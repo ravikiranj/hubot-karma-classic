@@ -1,23 +1,23 @@
 # Description:
-#       Track arbitrary karma
+#   Track arbitrary karma
 #
 # Dependencies:
-#       None
+#   None
 #
 # Configuration:
-#       None
+#   None
 #
 # Commands:
-#       <thing>++ - give thing some karma
-#       <thing>-- - take away some of thing's karma
-#       hubot karma <thing> - check thing's karma (if <thing> is omitted, show the top 5)
-#       hubot karma top [n] - show the top n (default: 10)
-#       hubot karma bottom [n] - show the bottom n (default: 10)
+#   <thing>++ - give thing some karma
+#   <thing>-- - take away some of thing's karma
+#   hubot karma <thing> - check thing's karma (if <thing> is omitted, show the top 5)
+#   hubot karma top [n] - show the top n (default: 10)
+#   hubot karma bottom [n] - show the bottom n (default: 10)
 #
 # Author:
-#       D. Stuart Freeman (@stuartf) https://github.com/stuartf
-#       Andy Beger (@abeger) https://github.com/abeger
-#       Ravikiran Janardhana (@ravikiranj)
+#   D. Stuart Freeman (@stuartf) https://github.com/stuartf
+#   Andy Beger (@abeger) https://github.com/abeger
+#   Ravikiran Janardhana (@ravikiranj)
 
 
 class Karma
