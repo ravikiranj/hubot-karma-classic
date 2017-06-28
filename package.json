@@ -19,5 +19,16 @@
   "bugs": {
     "url": "https://github.com/notpeter/hubot-karma-classic/issues"
   },
+  "devDependencies": {
+    "coffee-script": "1.6.3",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-mocha-test": "~0.12.7",
+    "grunt-release": "~0.11.0",
+    "matchdep": "~0.3.0",
+    "grunt-coffeelint": "^0.0.16"
+  },
+
   "homepage": "https://github.com/notpeter/hubot-karma-classic"
 }
