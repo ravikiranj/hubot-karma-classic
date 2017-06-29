@@ -77,24 +77,34 @@ class Karma
 
 module.exports = (robot) ->
     karma = new Karma robot
+    decrementKarmaRegex = /@?(\S+[^-\s])\s?--(\s|$)/g
+    incrementKarmaRegex = /@?(\S+[^+\s])\s?\+\+(\s|$)/g
 
     ###
     # Listen for "++" messages and increment
     ###
-    robot.hear /@?(\S+[^+\s])\s?\+\+(\s|$)/, (msg) ->
-        subject = msg.match[1].toLowerCase()
-        karma.increment subject
-        msg.send "#{subject} #{karma.incrementResponse()} (Karma: #{karma.get(subject)})"
+    robot.hear incrementKarmaRegex, (msg) ->
+        for input in msg.match
+            result = incrementKarmaRegex.exec(input)
+            incrementKarmaRegex.lastIndex = 0
+            if result?
+                subject = result.toLowerCase()
+                karma.increment subject
+                msg.send "#{subject} #{karma.incrementResponse()} (Karma: #{karma.get(subject)})"
 
     ###
     # Listen for "--" messages and decrement
     ###
-    robot.hear /@?(\S+[^-\s])\s?--(\s|$)/, (msg) ->
-        subject = msg.match[1].toLowerCase()
-        # avoid catching HTML comments
-        unless subject[-2..] == "<!"
-            karma.decrement subject
-            msg.send "#{subject} #{karma.decrementResponse()} (Karma: #{karma.get(subject)})"
+    robot.hear decrementKarmaRegex, (msg) ->
+        for input in msg.match
+            result = decrementKarmaRegex.exec(input)
+            decrementKarmaRegex.lastIndex = 0
+            if result?
+                subject = result.toLowerCase()
+                # avoid catching HTML comments
+                unless subject[-2..] == "<!"
+                    karma.decrement subject
+                    msg.send "#{subject} #{karma.decrementResponse()} (Karma: #{karma.get(subject)})"
 
     ###
     # Function that handles top and bottom list
