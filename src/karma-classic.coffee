@@ -87,10 +87,8 @@ module.exports = (robot) ->
         for input in msg.match
             result = incrementKarmaRegex.exec(input)
             incrementKarmaRegex.lastIndex = 0
-            if result?
-                robot.logger.info "increment"
-                robot.logger.info result
-                subject = result.toLowerCase()
+            if result? and result[1]?
+                subject = result[1].toLowerCase()
                 karma.increment subject
                 msg.send "#{subject} #{karma.incrementResponse()} (Karma: #{karma.get(subject)})"
 
@@ -101,10 +99,8 @@ module.exports = (robot) ->
         for input in msg.match
             result = decrementKarmaRegex.exec(input)
             decrementKarmaRegex.lastIndex = 0
-            if result?
-                robot.logger.info "decrement"
-                robot.logger.info result
-                subject = result.toLowerCase()
+            if result? and result[1]?
+                subject = result[1].toLowerCase()
                 # avoid catching HTML comments
                 unless subject[-2..] == "<!"
                     karma.decrement subject
